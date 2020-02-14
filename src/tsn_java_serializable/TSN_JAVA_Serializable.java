@@ -8,23 +8,23 @@ import java.io.ObjectOutputStream;
 public class TSN_JAVA_Serializable {
 
     public static void main(String[] args) {
-        Employee[] staff = new Employee[3];
+        Employee[] staff = new Employee[2];
 
         Employee harry = new Employee("Harry Hacker", 50000, 1989, 10, 1);
-        Manager carl = new Manager("Carl Cracker", 80000, 1987, 12, 15);
+        
+        Director carl = new Director("Carl Cracker", 80000, 1987, 12, 15);
         carl.setSecretary(harry);
-        Manager tony = new Manager("Tony Tester", 40000, 1990, 3, 15);
-        tony.setSecretary(harry);
 
         staff[0] = carl;
         staff[1] = harry;
-        staff[2] = tony;
 
         try {
+            // Сброс данных объекта staff в файл (сериализация данных)
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("employee.dat"));
             out.writeObject(staff);
             out.close();
 
+            // Чтение сериализованных данных из файла в объект (десериализация данных)
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("employee.dat"));
             Employee[] newStaff = (Employee[]) in.readObject();
             in.close();
@@ -34,6 +34,7 @@ public class TSN_JAVA_Serializable {
             for (Employee e : newStaff) {
                 System.out.println(e);
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
