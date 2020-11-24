@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 public class TSN_JAVA_Serializable {
 
     public static void main(String[] args) {
-        Employee[] staff = new Employee[2];
+        Employee[] staff = new Employee[2]; // Массив сотрудников
 
         Employee anna = new Employee("Anna Joken", 50000, 1989, 10, 1);
         

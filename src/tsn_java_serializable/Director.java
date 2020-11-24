@@ -10,8 +10,8 @@ public class Director extends Employee {
         this.secretary = null;
     }
 
-    public void setSecretary(Employee s) {
-        this.secretary = s;
+    public void setSecretary(Employee secretary) {
+        this.secretary = secretary;
     }
 
     @Override
