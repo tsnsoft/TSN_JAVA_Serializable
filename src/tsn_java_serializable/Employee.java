@@ -7,15 +7,14 @@ import java.util.GregorianCalendar;
 public class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String name;
+    private final String name;
     private double salary;
-    private Date hireDay;
+    private final Date hireDay;
 
-    public Employee(String n, double s, int year, int month, int day) {
-        name = n;
-        salary = s;
-        GregorianCalendar calendar = new GregorianCalendar(year, month - 1, day);
-        hireDay = calendar.getTime();
+    public Employee(String name, double salary, int year, int month, int day) {
+        this.name = name;
+        this.salary = salary;
+        this.hireDay = new GregorianCalendar(year, month - 1, day).getTime();
     }
 
     public void raiseSalary(double byPercent) {
@@ -23,6 +22,7 @@ public class Employee implements Serializable {
         salary += raise;
     }
 
+    @Override
     public String toString() {
         return getClass().getName() + "[name=" + name + ",salary=" + salary + ",hireDay=" + hireDay + "]";
     }

@@ -10,13 +10,13 @@ public class TSN_JAVA_Serializable {
     public static void main(String[] args) {
         Employee[] staff = new Employee[2];
 
-        Employee harry = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+        Employee anna = new Employee("Anna Joken", 50000, 1989, 10, 1);
         
-        Director carl = new Director("Carl Cracker", 80000, 1987, 12, 15);
-        carl.setSecretary(harry);
+        Director carl = new Director("Carl Hacker", 80000, 1987, 12, 15);
+        carl.setSecretary(anna);
 
         staff[0] = carl;
-        staff[1] = harry;
+        staff[1] = anna;
 
         try {
             // Сброс данных объекта staff в файл (сериализация данных)
@@ -26,11 +26,12 @@ public class TSN_JAVA_Serializable {
 
             // Чтение сериализованных данных из файла в объект (десериализация данных)
             ObjectInputStream in = new ObjectInputStream(new FileInputStream("employee.dat"));
-            Employee[] newStaff = (Employee[]) in.readObject();
+            Employee[] newStaff = (Employee[]) in.readObject(); // Новый список
             in.close();
 
-            newStaff[1].raiseSalary(10);
+            newStaff[1].raiseSalary(10); // Увеличим секретарю зарплату на 10 %
 
+            // Вывод на экран массива объектов newStaff
             for (Employee e : newStaff) {
                 System.out.println(e);
             }
